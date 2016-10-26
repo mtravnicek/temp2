@@ -8,15 +8,18 @@ import javax.persistence.Entity;
 @Entity
 public class Car extends AbstractEntity {
 
-  public Car() {}
+    public Car() {
+    }
 
-  private String test;
+    private String test;
 
-  public String getTest() {
-    return test;
-  }
+    public String getTest() {
+        return test;
+    }
 
-  public void setTest(String test) {
-    this.test = test;
-  }
+    public void setTest(String test) {
+        this.test = test;
+    }
+
+
 }

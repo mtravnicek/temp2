@@ -22,27 +22,27 @@ import javax.sql.DataSource;
 @ComponentScan
 @EnableJpaRepositories
 public class Config {
-  @Bean
-  public LoggingAspect loggingAspect() {
-    return new LoggingAspect();
-  }
+    @Bean
+    public LoggingAspect loggingAspect() {
+        return new LoggingAspect();
+    }
 
-  @Bean
-  public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
-    LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-    factory.setDataSource(dataSource());
-    factory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-    return factory;
-  }
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+        factory.setDataSource(dataSource());
+        factory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+        return factory;
+    }
 
-  @Bean
-  public JpaTransactionManager transactionManager() {
-    return new JpaTransactionManager(entityManagerFactory().getObject());
-  }
+    @Bean
+    public JpaTransactionManager transactionManager() {
+        return new JpaTransactionManager(entityManagerFactory().getObject());
+    }
 
-  @Bean
-  public DataSource dataSource() {
-    EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-    return builder.setType(EmbeddedDatabaseType.H2).build();
-  }
+    @Bean
+    public DataSource dataSource() {
+        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+        return builder.setType(EmbeddedDatabaseType.H2).build();
+    }
 }

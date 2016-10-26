@@ -12,15 +12,15 @@ import javax.inject.Named;
 @Named
 public class HelloWorld {
 
-  @Inject
-  private CarRepository repository;
+    @Inject
+    private CarRepository repository;
 
-  public void sayHello() {
-    System.out.println("COOL");
-    Car c = new Car();
-    c.setTest("test");
-    repository.save(c);
+    public void sayHello() {
+        System.out.println("COOL");
+        Car c = new Car();
+        c.setTest("test");
+        repository.save(c);
 
-    repository.findAll().forEach(e -> System.out.println("CARR" + e.getId() + " " + e.getTest()));
-  }
+        repository.findAll().forEach(e -> System.out.println("CARR" + e.getId() + " " + e.getTest()));
+    }
 }
