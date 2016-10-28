@@ -9,7 +9,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class App {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
-        context.getBean(HelloWorld.class).sayHello();
-
+        HelloWorld bean = context.getBean(HelloWorld.class);
+        bean.sayHello();
+        bean.insertUser();
+        bean.getUser();
     }
 }
