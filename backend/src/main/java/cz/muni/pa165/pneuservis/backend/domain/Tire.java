@@ -12,10 +12,6 @@ import java.math.BigDecimal;
  */
 @Entity
 public class Tire extends AbstractEntity {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
-
     @NotNull
     @Column(nullable=false)
     private String name;
@@ -36,16 +32,6 @@ public class Tire extends AbstractEntity {
     @DecimalMin("0.0")
     @NotNull
     private BigDecimal value;
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -103,7 +89,6 @@ public class Tire extends AbstractEntity {
 
         Tire tire = (Tire) o;
 
-        if (!id.equals(tire.id)) return false;
         if (!name.equals(tire.name)) return false;
         if (tireType != tire.tireType) return false;
         if (!size.equals(tire.size)) return false;
@@ -114,7 +99,6 @@ public class Tire extends AbstractEntity {
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + id.hashCode();
         result = 31 * result + name.hashCode();
         result = 31 * result + tireType.hashCode();
         result = 31 * result + size.hashCode();
@@ -127,7 +111,7 @@ public class Tire extends AbstractEntity {
     @Override
     public String toString() {
         return "Tire{" +
-                "id=" + id +
+                "id=" + super.getId() +
                 ", name='" + name + '\'' +
                 ", tireType=" + tireType +
                 ", size='" + size + '\'' +
