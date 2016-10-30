@@ -1,6 +1,7 @@
 package cz.muni.pa165.pneuservis.backend.test.dao;
 
 import cz.muni.pa165.pneuservis.backend.domain.User;
+import cz.muni.pa165.pneuservis.backend.enums.Role;
 import cz.muni.pa165.pneuservis.backend.repository.UserRepository;
 import cz.muni.pa165.pneuservis.backend.test.config.DaoTestConfig;
 import org.junit.Assert;
@@ -28,7 +29,7 @@ public class UserDaoTest {
         user.setEmail("mich.krajcovic@gmail.com");
         user.setName("Michal Krajčovič");
         user.setPassword("B1C788ABAC15390DE987AD17B65AC73C9B475D428A51F245C645A442FDDD078B");
-        user.setRoles(Arrays.asList(User.Role.ADMIN, User.Role.CUSTOMER));
+        user.setRoles(Arrays.asList(Role.ADMIN, Role.CUSTOMER));
 
         userRepository.save(user);
 

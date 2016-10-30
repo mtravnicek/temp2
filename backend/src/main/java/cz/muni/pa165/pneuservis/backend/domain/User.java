@@ -1,5 +1,7 @@
 package cz.muni.pa165.pneuservis.backend.domain;
 
+import cz.muni.pa165.pneuservis.backend.enums.Role;
+
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -25,7 +27,7 @@ public class User extends AbstractEntity {
     private String email;
 
     @Enumerated
-    @ElementCollection(targetClass = User.Role.class)
+    @ElementCollection(targetClass = Role.class)
     private List<Role> roles;
 
     public User() {}
@@ -78,9 +80,5 @@ public class User extends AbstractEntity {
         int result = super.hashCode();
         result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
         return result;
-    }
-
-    public enum Role {
-        ADMIN, CUSTOMER
     }
 }

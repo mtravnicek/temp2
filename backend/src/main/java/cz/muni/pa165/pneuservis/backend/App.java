@@ -13,5 +13,7 @@ public class App {
         bean.sayHello();
         bean.insertUser();
         bean.getUser();
+        bean.createTire();
+        bean.testTire();
     }
 }
