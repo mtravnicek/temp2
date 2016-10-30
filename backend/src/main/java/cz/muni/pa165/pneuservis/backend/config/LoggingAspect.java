@@ -1,7 +1,9 @@
 package cz.muni.pa165.pneuservis.backend.config;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -17,8 +19,7 @@ import java.util.Arrays;
 public class LoggingAspect {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    //  @Pointcut("within(com.myapp.service..*)")
-    @Pointcut("execution(* sayHello(..))")
+    @Pointcut("within(cz.muni.pa165.pneuservis.backend.service..*) || within(cz.muni.pa165.pneuservis.backend.repository..*)")
     public void loggingPointcut() {
     }
 
@@ -37,5 +38,12 @@ public class LoggingAspect {
             logger.error("An error occurred in {}.{} with args = {}", signature.getDeclaringTypeName(), signature.getName(), Arrays.toString(point.getArgs()));
             return e;
         }
+    }
+
+    @AfterThrowing(pointcut = "loggingPointcut()", throwing = "e")
+    public void logAfterThrowing(JoinPoint point, Throwable e) {
+        logger.error("Exception in {}.{}() with cause = \'{}\' and exception = \'{}\'",
+                point.getSignature().getDeclaringTypeName(), point.getSignature().getName(), e.getCause(), e.getMessage());
+        e.printStackTrace();
     }
 }
