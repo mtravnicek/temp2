@@ -4,9 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author Michal Krajcovic <mkrajcovic@mail.muni.cz>
@@ -14,11 +14,14 @@ import java.util.Objects;
 @Entity
 public class User extends AbstractEntity {
 
+    @NotNull
     private String name;
 
     private String password;
 
     @Column(nullable = false, unique = true)
+    @Pattern(regexp=".+@.+\\....?")
+    @NotNull
     private String email;
 
     @Enumerated
@@ -63,7 +66,6 @@ public class User extends AbstractEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
-        if (!super.equals(o)) return false;
 
         User user = (User) o;
 
