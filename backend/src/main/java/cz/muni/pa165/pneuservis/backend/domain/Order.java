@@ -3,10 +3,14 @@ package cz.muni.pa165.pneuservis.backend.domain;
 //import cz.fi.muni.pa165.entity.OrderItem;
 import cz.muni.pa165.pneuservis.backend.enums.OrderState;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
@@ -40,6 +44,9 @@ public class Order extends AbstractAuditedEntity {
     @Min(1)
     @NotNull
     private Integer tireQuantity;
+    
+    @ManyToMany 
+    private List<AdditionalService> additionalServices;    
 
     @Enumerated
     @NotNull
@@ -96,6 +103,15 @@ public class Order extends AbstractAuditedEntity {
     public void setTireQuantity(Integer tireQuantity) {
         this.tireQuantity = tireQuantity;
     }
+
+    public List<AdditionalService> getAdditionalServices() {
+        return additionalServices;
+    }
+
+    public void setAdditionalServices(List<AdditionalService> additionalServices) {
+        this.additionalServices = additionalServices;
+    }
+        
 
     public OrderState getState() {
         return state;
