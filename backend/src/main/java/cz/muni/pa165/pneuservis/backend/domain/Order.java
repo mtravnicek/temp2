@@ -153,8 +153,7 @@ public class Order extends AbstractEntity {
     public int hashCode() {
         int hash = 5;
         hash = 29 * hash + Objects.hashCode(getUser());
-        hash = 29 * hash + Objects.hashCode(getDateCreated());
-        hash = 29 * hash + Objects.hashCode(getState());
+        hash = 29 * hash + Objects.hashCode(getDateCreated());        
         return hash;
     }
 
@@ -171,9 +170,7 @@ public class Order extends AbstractEntity {
         }
 
         final Order other = (Order) obj;
-        if (!Objects.equals(getState(), other.getState())) {
-            return false;
-        }
+        
         if (!Objects.equals(getDateCreated(), other.getDateCreated())) {
             return false;
         }
