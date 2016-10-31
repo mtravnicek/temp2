@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
  * @author Michal Krajcovic <mkrajcovic@mail.muni.cz>
  */
 @Entity
+@Table(name = "Users")
 public class User extends AbstractEntity {
 
     @NotNull
@@ -27,7 +30,7 @@ public class User extends AbstractEntity {
     private String email;
 
     @Enumerated
-    @ElementCollection(targetClass = Role.class)
+    @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
     private List<Role> roles;
 
     public User() {}
