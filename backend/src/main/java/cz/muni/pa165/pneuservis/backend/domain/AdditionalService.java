@@ -2,6 +2,7 @@ package cz.muni.pa165.pneuservis.backend.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -20,6 +21,7 @@ public class AdditionalService extends AbstractEntity {
     private String description;
 
     @NotNull
+    @DecimalMin("0.00")
     @Column(nullable = false)
     private BigDecimal price;
 
