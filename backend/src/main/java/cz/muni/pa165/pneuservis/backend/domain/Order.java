@@ -3,15 +3,16 @@ package cz.muni.pa165.pneuservis.backend.domain;
 //import cz.fi.muni.pa165.entity.OrderItem;
 import cz.muni.pa165.pneuservis.backend.enums.OrderState;
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -21,7 +22,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name="Orders")
-public class Order extends AbstractAuditedEntity {
+public class Order extends AbstractEntity {
 
     @ManyToOne(optional = false)
     @NotNull    
@@ -46,7 +47,11 @@ public class Order extends AbstractAuditedEntity {
     private Integer tireQuantity;
     
     @ManyToMany 
-    private List<AdditionalService> additionalServices;    
+    private List<AdditionalService> additionalServices;
+    
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCreated;
 
     @Enumerated
     @NotNull
@@ -111,8 +116,15 @@ public class Order extends AbstractAuditedEntity {
     public void setAdditionalServices(List<AdditionalService> additionalServices) {
         this.additionalServices = additionalServices;
     }
-        
 
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }        
+        
     public OrderState getState() {
         return state;
     }
@@ -125,7 +137,7 @@ public class Order extends AbstractAuditedEntity {
     public int hashCode() {
         int hash = 5;
         hash = 29 * hash + Objects.hashCode(getUser());
-        hash = 29 * hash + Objects.hashCode(getCreatedDate());
+        hash = 29 * hash + Objects.hashCode(getDateCreated());
         hash = 29 * hash + Objects.hashCode(getState());
         return hash;
     }
@@ -146,7 +158,7 @@ public class Order extends AbstractAuditedEntity {
         if (!Objects.equals(getState(), other.getState())) {
             return false;
         }
-        if (!Objects.equals(getCreatedDate(), other.getCreatedDate())) {
+        if (!Objects.equals(getDateCreated(), other.getDateCreated())) {
             return false;
         }
         if (!Objects.equals(getUser(), other.getUser())) {
