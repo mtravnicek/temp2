@@ -103,6 +103,16 @@ public class TireDaoTest {
     }
 
     @Test
+    public void testCreateWithNegativePrice() {
+        Tire tire = newTire();
+        tire.setPrice(BigDecimal.valueOf(-150));
+
+        exception.expectCause(isA(RollbackException.class));
+
+        tireRepository.save(tire);
+    }
+
+    @Test
     public void testCreateWithNullVehicleType() {
         Tire tire = newTire();
         tire.setVehicleType(null);
