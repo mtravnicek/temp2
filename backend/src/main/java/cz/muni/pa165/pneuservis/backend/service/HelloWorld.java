@@ -54,7 +54,7 @@ public class HelloWorld {
         t.setSize("235R19");
         t.setManufacturer("Dunlop");
         t.setVehicleType("Neviem");
-        t.setValue(new BigDecimal(10.0));
+        t.setPrice(new BigDecimal(10.0));
         tireRepo.save(t);
     }
 

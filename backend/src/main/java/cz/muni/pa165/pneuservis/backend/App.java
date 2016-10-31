@@ -10,7 +10,6 @@ public class App {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         HelloWorld bean = context.getBean(HelloWorld.class);
-        bean.sayHello();
         bean.insertUser();
         bean.getUser();
         bean.createTire();

@@ -31,7 +31,7 @@ public class Tire extends AbstractEntity {
 
     @DecimalMin("0.0")
     @NotNull
-    private BigDecimal value;
+    private BigDecimal price;
 
     public String getName() {
         return name;
@@ -73,38 +73,41 @@ public class Tire extends AbstractEntity {
         this.vehicleType = vehicleType;
     }
 
-    public BigDecimal getValue() {
-        return value;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setValue(BigDecimal value) {
-        this.value = value;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (!(o instanceof Tire)) return false;
 
         Tire tire = (Tire) o;
 
-        if (!name.equals(tire.name)) return false;
-        if (tireType != tire.tireType) return false;
-        if (!size.equals(tire.size)) return false;
-        if (!manufacturer.equals(tire.manufacturer)) return false;
-        return vehicleType.equals(tire.vehicleType) && value.equals(tire.value);
+        if (getName() != null ? !getName().equals(tire.getName()) : tire.getName() != null) return false;
+        if (getTireType() != tire.getTireType()) return false;
+        if (getSize() != null ? !getSize().equals(tire.getSize()) : tire.getSize() != null) return false;
+        if (getManufacturer() != null ? !getManufacturer().equals(tire.getManufacturer()) : tire.getManufacturer() != null)
+            return false;
+        if (getVehicleType() != null ? !getVehicleType().equals(tire.getVehicleType()) : tire.getVehicleType() != null)
+            return false;
+        return getPrice() != null ? getPrice().equals(tire.getPrice()) : tire.getPrice() == null;
+
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + tireType.hashCode();
-        result = 31 * result + size.hashCode();
-        result = 31 * result + manufacturer.hashCode();
-        result = 31 * result + vehicleType.hashCode();
-        result = 31 * result + value.hashCode();
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getTireType() != null ? getTireType().hashCode() : 0);
+        result = 31 * result + (getSize() != null ? getSize().hashCode() : 0);
+        result = 31 * result + (getManufacturer() != null ? getManufacturer().hashCode() : 0);
+        result = 31 * result + (getVehicleType() != null ? getVehicleType().hashCode() : 0);
+        result = 31 * result + (getPrice() != null ? getPrice().hashCode() : 0);
         return result;
     }
 
@@ -117,7 +120,7 @@ public class Tire extends AbstractEntity {
                 ", size='" + size + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", vehicleType='" + vehicleType + '\'' +
-                ", value=" + value +
+                ", price=" + price +
                 '}';
     }
 }
