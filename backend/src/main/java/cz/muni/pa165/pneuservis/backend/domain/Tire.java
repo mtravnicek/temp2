@@ -95,7 +95,11 @@ public class Tire extends AbstractEntity {
             return false;
         if (getVehicleType() != null ? !getVehicleType().equals(tire.getVehicleType()) : tire.getVehicleType() != null)
             return false;
-        return getPrice() != null ? getPrice().equals(tire.getPrice()) : tire.getPrice() == null;
+        if (getPrice() != null) {
+            return (getPrice().compareTo(tire.getPrice()) == 0);
+        } else {
+            return tire.getPrice() == null;
+        }
 
     }
 
