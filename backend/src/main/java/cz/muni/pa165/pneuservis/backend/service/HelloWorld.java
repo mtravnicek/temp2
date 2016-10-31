@@ -1,11 +1,9 @@
 package cz.muni.pa165.pneuservis.backend.service;
 
-import cz.muni.pa165.pneuservis.backend.domain.Car;
 import cz.muni.pa165.pneuservis.backend.domain.Tire;
 import cz.muni.pa165.pneuservis.backend.domain.User;
 import cz.muni.pa165.pneuservis.backend.enums.Role;
 import cz.muni.pa165.pneuservis.backend.enums.TireType;
-import cz.muni.pa165.pneuservis.backend.repository.CarRepository;
 import cz.muni.pa165.pneuservis.backend.repository.TireRepository;
 import cz.muni.pa165.pneuservis.backend.repository.UserRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,22 +20,10 @@ import java.util.Arrays;
 public class HelloWorld {
 
     @Inject
-    private CarRepository repository;
-
-    @Inject
     private UserRepository userDao;
 
     @Inject
     private TireRepository tireRepo;
-
-    public void sayHello() {
-        System.out.println("COOL");
-        Car c = new Car();
-        c.setTest("test");
-        repository.save(c);
-
-        repository.findAll().forEach(e -> System.out.println("CARR" + e.getId() + " " + e.getTest()));
-    }
 
     public void insertUser() {
         User user = new User();
