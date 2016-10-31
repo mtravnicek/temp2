@@ -21,19 +21,19 @@ import javax.validation.constraints.NotNull;
  * Created by Michal Travnicek on 10/26/2016.
  */
 @Entity
-@Table(name="Orders")
+@Table(name = "Orders")
 public class Order extends AbstractEntity {
 
     @ManyToOne(optional = false)
-    @NotNull    
+    @NotNull
     private User user;
-    
+
     @NotNull
     private String address;
-    
+
     @NotNull
     private String phone;
-    
+
     @DecimalMin("0.0")
     @NotNull
     private BigDecimal price;
@@ -45,10 +45,10 @@ public class Order extends AbstractEntity {
     @Min(1)
     @NotNull
     private Integer tireQuantity;
-    
-    @ManyToMany 
+
+    @ManyToMany
     private List<AdditionalService> additionalServices;
-    
+
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
@@ -123,14 +123,30 @@ public class Order extends AbstractEntity {
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
-    }        
-        
+    }
+
     public OrderState getState() {
         return state;
     }
 
     public void setState(OrderState state) {
         this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" + 
+                "id=" + getId() +
+                ", user=" + user +
+                ", phone=" + phone +
+                ", address=" + address +
+                ", dateCreated=" + dateCreated +
+                ", state=" + state +                 
+                ", price=" + price +
+                ", tire=" + tire +
+                ", tireQuantity=" + tireQuantity +
+                ", additionalServices=" + additionalServices +                
+                '}';
     }
 
     @Override
