@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
@@ -54,7 +54,7 @@ public class UserServiceTest extends AbstractTestNGSpringContextTests {
 
         when(orderRepository.findByDateCreatedBetween(any(Date.class), any(Date.class))).thenReturn(Collections.singletonList(order));
 
-        Set<User> usersWithOrdersLastSevenDays = userService.findUsersWithOrdersLastSevenDays();
+        List<User> usersWithOrdersLastSevenDays = userService.findUsersWithOrdersLastSevenDays();
 
         Assert.assertTrue(usersWithOrdersLastSevenDays.contains(user));
     }
