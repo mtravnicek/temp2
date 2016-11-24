@@ -1,8 +1,7 @@
 package cz.muni.pa165.pneuservis.service;
 
 import cz.muni.pa165.pneuservis.config.TestConfiguration;
-import cz.muni.pa165.pneuservis.persistence.domain.AdditionalService;
-import cz.muni.pa165.pneuservis.persistence.repository.AdditionalServiceRepository;
+import cz.muni.pa165.pneuservis.persistence.repository.TireRepository;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -12,19 +11,17 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.math.BigDecimal;
-
 /**
- * Created by peter on 11/22/16.
+ * @author Michal Krajcovic <mkrajcovic@mail.muni.cz>
  */
 @ContextConfiguration(classes = TestConfiguration.class)
-public class AdditionalServiceServiceTest extends AbstractTestNGSpringContextTests {
+public class TireServiceTest extends AbstractTestNGSpringContextTests {
     @Mock
-    AdditionalServiceRepository repository;
+    private TireRepository repository;
 
     @Autowired
     @InjectMocks
-    AdditionalServiceService serviceService;
+    private TireService tireService;
 
     @BeforeClass
     public void setup() {
@@ -33,10 +30,6 @@ public class AdditionalServiceServiceTest extends AbstractTestNGSpringContextTes
 
     @Test
     public void test1() {
-        AdditionalService service = new AdditionalService();
-        service.setName("Nazov");
-        service.setDescription("Opis");
-        service.setPrice(BigDecimal.TEN);
-        serviceService.save(service);
+
     }
 }

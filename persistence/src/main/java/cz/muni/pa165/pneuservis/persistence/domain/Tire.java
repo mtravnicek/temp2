@@ -100,13 +100,11 @@ public class Tire extends AbstractEntity {
         } else {
             return tire.getPrice() == null;
         }
-
     }
 
     @Override
     public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        int result = getName() != null ? getName().hashCode() : 0;
         result = 31 * result + (getTireType() != null ? getTireType().hashCode() : 0);
         result = 31 * result + (getSize() != null ? getSize().hashCode() : 0);
         result = 31 * result + (getManufacturer() != null ? getManufacturer().hashCode() : 0);
