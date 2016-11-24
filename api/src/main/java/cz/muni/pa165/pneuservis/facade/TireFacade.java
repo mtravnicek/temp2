@@ -13,5 +13,6 @@ public interface TireFacade {
     TireDTO findOne(Long id);
     List<TireDTO> findAll();
     List<TireDTO> findByTireType(TireTypeDTO tireType);
+    List<TireDTO> findThreeBestSelling();
     void delete(Long id);
 }
