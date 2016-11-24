@@ -1,7 +1,5 @@
 package cz.muni.pa165.pneuservis.dto;
 
-import cz.muni.pa165.pneuservis.persistence.domain.AdditionalService;
-import cz.muni.pa165.pneuservis.persistence.domain.Tire;
 import cz.muni.pa165.pneuservis.persistence.enums.OrderState;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -15,9 +13,9 @@ public class OrderDTO {
     private String address;
     private String phone;
     private BigDecimal price;
-    private Tire tire;
+    private TireDTO tire;
     private Integer tireQuantity;
-    private List<AdditionalService> additionalServices;
+    private List<AdditionalServiceDTO> additionalServices;
     private Date dateCreated;
     private OrderState state;
 
@@ -53,11 +51,11 @@ public class OrderDTO {
         this.price = price;
     }
 
-    public Tire getTire() {
+    public TireDTO getTire() {
         return tire;
     }
 
-    public void setTire(Tire tire) {
+    public void setTire(TireDTO tire) {
         this.tire = tire;
     }
 
@@ -69,11 +67,11 @@ public class OrderDTO {
         this.tireQuantity = tireQuantity;
     }
 
-    public List<AdditionalService> getAdditionalServices() {
+    public List<AdditionalServiceDTO> getAdditionalServices() {
         return additionalServices;
     }
 
-    public void setAdditionalServices(List<AdditionalService> additionalServices) {
+    public void setAdditionalServices(List<AdditionalServiceDTO> additionalServices) {
         this.additionalServices = additionalServices;
     }
 
