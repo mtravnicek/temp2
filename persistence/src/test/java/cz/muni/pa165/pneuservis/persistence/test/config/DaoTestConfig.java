@@ -64,7 +64,6 @@ public class DaoTestConfig {
         properties.put("hibernate.connection.url", env.getProperty("hibernate.connection.url"));
         properties.put("hibernate.connection.driver_class", env.getProperty("hibernate.connection.driver_class"));
         properties.put("hibernate.cache.provider_class", env.getProperty("hibernate.cache.provider_class"));
-        properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql", Boolean.class));
         properties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql", Boolean.class));

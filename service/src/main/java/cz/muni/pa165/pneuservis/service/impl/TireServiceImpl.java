@@ -9,7 +9,6 @@ import cz.muni.pa165.pneuservis.service.TireService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.*;
@@ -18,7 +17,6 @@ import java.util.*;
  * @author Martin Spisiak <spisiak@mail.muni.cz> on 23/11/2016.
  */
 @Service
-@Transactional
 public class TireServiceImpl implements TireService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

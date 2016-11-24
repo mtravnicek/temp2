@@ -6,13 +6,11 @@ import cz.muni.pa165.pneuservis.persistence.enums.TireType;
 import cz.muni.pa165.pneuservis.persistence.repository.OrderRepository;
 import cz.muni.pa165.pneuservis.persistence.repository.TireRepository;
 import cz.muni.pa165.pneuservis.service.config.ServiceConfiguration;
-import cz.muni.pa165.pneuservis.service.util.Utils;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.test.util.ReflectionTestUtils;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -42,18 +40,15 @@ public class TireServiceTest extends AbstractTestNGSpringContextTests {
     @Mock
     private OrderRepository orderRepository;
 
-    @InjectMocks
     @Inject
+    @InjectMocks
     private TireService tireService;
 
     private Tire tire;
 
     @BeforeClass
-    public void setup() throws Exception {
+    public void setup() {
         MockitoAnnotations.initMocks(this);
-        TireService unwrappedProxy = (TireService) Utils.unwrapProxy(tireService);
-        ReflectionTestUtils.setField(unwrappedProxy, "tireRepository", tireRepository);
-        ReflectionTestUtils.setField(unwrappedProxy, "orderRepository", orderRepository);
     }
 
     @BeforeMethod
@@ -135,9 +130,6 @@ public class TireServiceTest extends AbstractTestNGSpringContextTests {
 
         Assert.assertTrue(bestSellingTires.size() == 3);
 
-        for (Tire bestSellingTire : bestSellingTires) {
-            System.out.println(bestSellingTire.getName());
-        }
         Assert.assertTrue(bestSellingTires.contains(tire));
         Assert.assertTrue(bestSellingTires.contains(t2));
         Assert.assertTrue(bestSellingTires.contains(t3));

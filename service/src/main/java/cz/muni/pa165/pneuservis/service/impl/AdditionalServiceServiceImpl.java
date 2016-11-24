@@ -6,7 +6,6 @@ import cz.muni.pa165.pneuservis.service.AdditionalServiceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.List;
  * Created by peter on 11/18/16.
  */
 @Service
-@Transactional
 public class AdditionalServiceServiceImpl implements AdditionalServiceService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
