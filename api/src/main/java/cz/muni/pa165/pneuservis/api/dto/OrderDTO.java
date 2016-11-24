@@ -1,6 +1,5 @@
-package cz.muni.pa165.pneuservis.dto;
+package cz.muni.pa165.pneuservis.api.dto;
 
-import cz.muni.pa165.pneuservis.persistence.enums.OrderState;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +16,7 @@ public class OrderDTO {
     private Integer tireQuantity;
     private List<AdditionalServiceDTO> additionalServices;
     private Date dateCreated;
-    private OrderState state;
+    private OrderStateDTO state;
 
     public Long getId() {
         return id;
@@ -83,11 +82,11 @@ public class OrderDTO {
         this.dateCreated = dateCreated;
     }
 
-    public OrderState getState() {
+    public OrderStateDTO getState() {
         return state;
     }
 
-    public void setState(OrderState state) {
+    public void setState(OrderStateDTO state) {
         this.state = state;
     }
     

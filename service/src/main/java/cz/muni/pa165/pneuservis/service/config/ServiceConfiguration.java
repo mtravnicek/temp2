@@ -1,4 +1,4 @@
-package cz.muni.pa165.pneuservis.config;
+package cz.muni.pa165.pneuservis.service.config;
 
 import cz.muni.pa165.pneuservis.persistence.config.PersistenceConfiguration;
 import org.dozer.DozerBeanMapper;

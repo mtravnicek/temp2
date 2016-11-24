@@ -1,12 +1,11 @@
-package cz.muni.pa165.pneuservis.facade.impl;
+package cz.muni.pa165.pneuservis.service.impl;
 
-import cz.muni.pa165.pneuservis.dto.TireDTO;
-import cz.muni.pa165.pneuservis.dto.TireTypeDTO;
-import cz.muni.pa165.pneuservis.facade.TireFacade;
+import cz.muni.pa165.pneuservis.api.dto.TireDTO;
+import cz.muni.pa165.pneuservis.api.dto.TireTypeDTO;
+import cz.muni.pa165.pneuservis.api.facade.TireFacade;
 import cz.muni.pa165.pneuservis.persistence.domain.Tire;
 import cz.muni.pa165.pneuservis.persistence.enums.TireType;
 import cz.muni.pa165.pneuservis.service.BeanMappingService;
-import cz.muni.pa165.pneuservis.service.OrderService;
 import cz.muni.pa165.pneuservis.service.TireService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

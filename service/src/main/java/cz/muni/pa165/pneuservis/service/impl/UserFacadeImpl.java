@@ -1,7 +1,7 @@
-package cz.muni.pa165.pneuservis.facade.impl;
+package cz.muni.pa165.pneuservis.service.impl;
 
-import cz.muni.pa165.pneuservis.dto.UserDTO;
-import cz.muni.pa165.pneuservis.facade.UserFacade;
+import cz.muni.pa165.pneuservis.api.dto.UserDTO;
+import cz.muni.pa165.pneuservis.api.facade.UserFacade;
 import cz.muni.pa165.pneuservis.persistence.domain.User;
 import cz.muni.pa165.pneuservis.service.BeanMappingService;
 import cz.muni.pa165.pneuservis.service.UserService;

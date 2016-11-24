@@ -1,14 +1,12 @@
-package cz.muni.pa165.pneuservis.facade;
+package cz.muni.pa165.pneuservis.api.facade;
 
-import cz.muni.pa165.pneuservis.dto.OrderDTO;
-import org.springframework.stereotype.Service;
+import cz.muni.pa165.pneuservis.api.dto.OrderDTO;
 
 import java.util.List;
 
 /**
  * @author Michal Travnicek xtravni2
  */
-@Service
 public interface OrderFacade {
     OrderDTO save(OrderDTO dto);
     OrderDTO findOne(Long id);

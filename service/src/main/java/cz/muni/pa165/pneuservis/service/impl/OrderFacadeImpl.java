@@ -1,7 +1,7 @@
-package cz.muni.pa165.pneuservis.facade.impl;
+package cz.muni.pa165.pneuservis.service.impl;
 
-import cz.muni.pa165.pneuservis.dto.OrderDTO;
-import cz.muni.pa165.pneuservis.facade.OrderFacade;
+import cz.muni.pa165.pneuservis.api.dto.OrderDTO;
+import cz.muni.pa165.pneuservis.api.facade.OrderFacade;
 import cz.muni.pa165.pneuservis.persistence.domain.Order;
 import cz.muni.pa165.pneuservis.service.OrderService;
 import cz.muni.pa165.pneuservis.service.BeanMappingService;

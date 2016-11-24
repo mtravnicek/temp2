@@ -1,6 +1,6 @@
-package cz.muni.pa165.pneuservis.facade;
+package cz.muni.pa165.pneuservis.api.facade;
 
-import cz.muni.pa165.pneuservis.dto.UserDTO;
+import cz.muni.pa165.pneuservis.api.dto.UserDTO;
 
 import java.util.List;
 

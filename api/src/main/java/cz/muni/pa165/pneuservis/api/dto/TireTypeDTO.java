@@ -1,4 +1,4 @@
-package cz.muni.pa165.pneuservis.dto;
+package cz.muni.pa165.pneuservis.api.dto;
 
 /**
  * @author Martin Spisiak <spisiak@mail.muni.cz> on 23/11/2016.

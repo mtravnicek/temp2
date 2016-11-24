@@ -1,7 +1,7 @@
-package cz.muni.pa165.pneuservis.facade;
+package cz.muni.pa165.pneuservis.api.facade;
 
-import cz.muni.pa165.pneuservis.dto.TireDTO;
-import cz.muni.pa165.pneuservis.dto.TireTypeDTO;
+import cz.muni.pa165.pneuservis.api.dto.TireDTO;
+import cz.muni.pa165.pneuservis.api.dto.TireTypeDTO;
 
 import java.util.List;
 
