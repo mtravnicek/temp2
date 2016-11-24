@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Michal Krajcovic <mkrajcovic@mail.muni.cz>
  */
 public interface UserRepository extends JpaRepository<User, Long> {
-	User findByEmail(String email);
+    User findByEmail(String email);
 }

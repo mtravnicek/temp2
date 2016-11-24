@@ -80,8 +80,6 @@ public class User extends AbstractEntity {
 
     @Override
     public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
-        return result;
+        return getEmail() != null ? getEmail().hashCode() : 0;
     }
 }

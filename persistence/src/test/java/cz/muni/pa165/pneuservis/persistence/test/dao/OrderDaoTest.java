@@ -24,6 +24,7 @@ import javax.persistence.RollbackException;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.isA;
 
@@ -171,6 +172,44 @@ public class OrderDaoTest {
         Assert.assertEquals("Number of orders", 0, orderRepository.findAll().size());
     }
 
+    @Test
+    public void testFindByCreatedDateBetween() {
+        Order o1 = createOrder();
+        User u2 = createCustomer();
+        u2.setEmail("test@test.com");
+        Order o2 = createOrder(u2);
+        User u3 = createCustomer();
+        u3.setEmail("test2@test.com");
+        Order o3 = createOrder(u3);
+
+        Calendar cal1 = Calendar.getInstance();
+        cal1.set(2000, 11, 1);
+        o1.setDateCreated(cal1.getTime());
+
+        Calendar cal2 = Calendar.getInstance();
+        cal2.set(2000, 11, 4);
+        o2.setDateCreated(cal2.getTime());
+
+        Calendar cal3 = Calendar.getInstance();
+        cal3.set(2000, 11, 8);
+        o3.setDateCreated(cal3.getTime());
+
+        orderRepository.save(o1);
+        orderRepository.save(o2);
+        orderRepository.save(o3);
+
+        Calendar start = Calendar.getInstance();
+        start.set(2000, 11, 3);
+        Calendar end = Calendar.getInstance();
+        end.set(2000, 11, 9);
+
+        List<Order> byDateCreatedBetween = orderRepository.findByDateCreatedBetween(start.getTime(), end.getTime());
+
+        Assert.assertTrue(byDateCreatedBetween.contains(o2));
+        Assert.assertTrue(byDateCreatedBetween.contains(o3));
+        Assert.assertFalse(byDateCreatedBetween.contains(o1));
+    }
+
     private User createCustomer() {
         User user = new User();
         user.setEmail("customer@mail.muni.cz");
@@ -193,6 +232,24 @@ public class OrderDaoTest {
 
     private Order createOrder(){
         User customer = createCustomer();
+        userRepository.save(customer);
+
+        Tire tire = createTire();
+        tireRepository.save(tire);
+
+        Order order = new Order();
+        order.setUser(customer);
+        order.setAddress("Botanicka 68, 60200 Brno");
+        order.setPhone("+420 156 123 749");
+        order.setPrice(new BigDecimal(3000));
+        order.setTire(tire);
+        order.setTireQuantity(4);
+        order.setDateCreated(Calendar.getInstance().getTime());
+        order.setState(OrderState.RECEIVED);
+        return order;
+    }
+
+    private Order createOrder(User customer){
         userRepository.save(customer);
 
         Tire tire = createTire();

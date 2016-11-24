@@ -3,6 +3,7 @@ package cz.muni.pa165.pneuservis.service;
 import cz.muni.pa165.pneuservis.persistence.domain.User;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Michal Krajcovic <mkrajcovic@mail.muni.cz>
@@ -17,4 +18,6 @@ public interface UserService {
     List<User> findAll();
 
     void delete(Long id);
+
+    Set<User> findUsersWithOrdersLastSevenDays();
 }
