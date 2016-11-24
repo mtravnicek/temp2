@@ -13,5 +13,6 @@ public interface TireService {
     Tire findOne(Long id);
     List<Tire> findAll();
     List<Tire> findByTireType(TireType tireType);
+    List<Tire> findThreeBestSelling();
     void delete(Long id);
 }

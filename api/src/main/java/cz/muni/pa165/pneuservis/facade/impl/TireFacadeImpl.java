@@ -3,7 +3,6 @@ package cz.muni.pa165.pneuservis.facade.impl;
 import cz.muni.pa165.pneuservis.dto.TireDTO;
 import cz.muni.pa165.pneuservis.dto.TireTypeDTO;
 import cz.muni.pa165.pneuservis.facade.TireFacade;
-import cz.muni.pa165.pneuservis.persistence.domain.Order;
 import cz.muni.pa165.pneuservis.persistence.domain.Tire;
 import cz.muni.pa165.pneuservis.persistence.enums.TireType;
 import cz.muni.pa165.pneuservis.service.BeanMappingService;
@@ -27,8 +26,7 @@ public class TireFacadeImpl implements TireFacade {
 
     @Inject
     public TireService tireService;
-    @Inject
-    public OrderService orderService;
+
     @Inject
     public BeanMappingService mappingService;
 
@@ -56,25 +54,7 @@ public class TireFacadeImpl implements TireFacade {
 
     public List<TireDTO> findThreeBestSelling(){
         logger.info("Requested to find three best selling tires, according to ordered quantity");
-        List<Order> orders = orderService.findAll();
-        Map<Long, Integer> orderedQuantity = new HashMap<>();
-        for (Order order:orders) {
-            Long tireId = order.getTire().getId();
-            Integer quantity = order.getTireQuantity();
-            if (!orderedQuantity.containsKey(tireId)){
-                orderedQuantity.put(tireId, quantity);
-            } else {
-                orderedQuantity.put(tireId, quantity + orderedQuantity.get(tireId));
-            }
-        }
-        List<Map.Entry<Long, Integer>> list = new LinkedList<>(orderedQuantity.entrySet());
-        Collections.sort(list, (o1, o2) -> (o1.getValue()).compareTo(o2.getValue()));
-
-        List<Tire> threeTires = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            threeTires.add(tireService.findOne(list.get(i).getKey()));
-        }
-        return mappingService.mapTo(threeTires, TireDTO.class);
+        return mappingService.mapTo(tireService.findThreeBestSelling(), TireDTO.class);
     }
 
     public void delete(Long id) {
