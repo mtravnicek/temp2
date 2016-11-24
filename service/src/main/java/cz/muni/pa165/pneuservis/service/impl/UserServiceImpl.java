@@ -10,10 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Michal Krajcovic <mkrajcovic@mail.muni.cz>
@@ -60,7 +57,7 @@ public class UserServiceImpl implements UserService {
 	}
 
     @Override
-    public Set<User> findUsersWithOrdersLastSevenDays() {
+    public List<User> findUsersWithOrdersLastSevenDays() {
         Calendar now = Calendar.getInstance();
         Calendar sevenDaysAgo = Calendar.getInstance();
         sevenDaysAgo.add(Calendar.DAY_OF_MONTH, -7);
@@ -73,6 +70,6 @@ public class UserServiceImpl implements UserService {
             result.add(order.getUser());
         }
 
-        return result;
+        return new ArrayList<>(result);
     }
 }

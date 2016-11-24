@@ -17,4 +17,6 @@ public interface UserFacade {
     List<UserDTO> findAll();
 
     void delete(Long id);
+
+    List<UserDTO> findUsersWithOrdersLastSevenDays();
 }

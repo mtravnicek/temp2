@@ -3,8 +3,8 @@ package cz.muni.pa165.pneuservis.service.impl;
 import cz.muni.pa165.pneuservis.persistence.domain.Order;
 import cz.muni.pa165.pneuservis.persistence.domain.Tire;
 import cz.muni.pa165.pneuservis.persistence.enums.TireType;
+import cz.muni.pa165.pneuservis.persistence.repository.OrderRepository;
 import cz.muni.pa165.pneuservis.persistence.repository.TireRepository;
-import cz.muni.pa165.pneuservis.service.OrderService;
 import cz.muni.pa165.pneuservis.service.TireService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +23,9 @@ public class TireServiceImpl implements TireService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Inject
-    TireRepository tireRepository;
+    private TireRepository tireRepository;
     @Inject
-    OrderService orderService;
+    private OrderRepository orderRepository;
 
     public Tire save(Tire tire){
         logger.info("Requested to save Tire : {}", tire);
@@ -48,7 +48,7 @@ public class TireServiceImpl implements TireService {
     }
 
     public List<Tire> findThreeBestSelling(){
-        List<Order> orders = orderService.findAll();
+        List<Order> orders = orderRepository.findAll();
         Map<Long, Integer> orderedQuantity = new HashMap<>();
         for (Order order:orders) {
             Long tireId = order.getTire().getId();
@@ -60,7 +60,7 @@ public class TireServiceImpl implements TireService {
             }
         }
         List<Map.Entry<Long, Integer>> list = new LinkedList<>(orderedQuantity.entrySet());
-        Collections.sort(list, (o1, o2) -> (o1.getValue()).compareTo(o2.getValue()));
+        Collections.sort(list, (o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
 
         List<Tire> threeTires = new ArrayList<>();
         for (int i = 0; i < 3; i++) {

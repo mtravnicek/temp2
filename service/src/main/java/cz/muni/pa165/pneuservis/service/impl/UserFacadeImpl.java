@@ -53,4 +53,10 @@ public class UserFacadeImpl implements UserFacade {
         logger.info("Requested to delete User with id: {} ", id);
         service.delete(id);
     }
+
+    @Override
+    public List<UserDTO> findUsersWithOrdersLastSevenDays() {
+        logger.info("Requested to find Users that ordered something in last week");
+        return mapper.mapTo(service.findUsersWithOrdersLastSevenDays(), UserDTO.class);
+    }
 }
