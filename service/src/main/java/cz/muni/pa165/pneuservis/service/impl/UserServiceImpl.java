@@ -10,8 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -66,6 +65,6 @@ public class UserServiceImpl implements UserService {
 
         List<Order> byDateCreatedBetween = orderRepository.findByDateCreatedBetween(sevenDaysAgo.getTime(), now.getTime());
 
-        return byDateCreatedBetween.stream().map(Order::getUser).collect(Collectors.toList());
+        return new ArrayList<>(byDateCreatedBetween.stream().map(Order::getUser).collect(Collectors.toSet()));
     }
 }
