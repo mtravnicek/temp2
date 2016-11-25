@@ -7,15 +7,18 @@ import cz.muni.pa165.pneuservis.persistence.repository.UserRepository;
 import cz.muni.pa165.pneuservis.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Michal Krajcovic <mkrajcovic@mail.muni.cz>
  */
-@Named
+@Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -64,12 +67,6 @@ public class UserServiceImpl implements UserService {
 
         List<Order> byDateCreatedBetween = orderRepository.findByDateCreatedBetween(sevenDaysAgo.getTime(), now.getTime());
 
-        Set<User> result = new HashSet<>();
-
-        for (Order order : byDateCreatedBetween) {
-            result.add(order.getUser());
-        }
-
-        return new ArrayList<>(result);
+        return byDateCreatedBetween.stream().map(Order::getUser).collect(Collectors.toList());
     }
 }
