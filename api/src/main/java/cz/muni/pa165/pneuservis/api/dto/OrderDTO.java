@@ -3,6 +3,7 @@ package cz.muni.pa165.pneuservis.api.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Michal Travnicek xtravni2
@@ -99,4 +100,34 @@ public class OrderDTO {
         this.state = state;
     }
     
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(getUser());
+        hash = 29 * hash + Objects.hashCode(getDateCreated());        
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof OrderDTO)) {
+            return false;
+        }
+
+        final OrderDTO other = (OrderDTO) obj;
+        
+        if (!Objects.equals(getDateCreated(), other.getDateCreated())) {
+            return false;
+        }
+        if (!Objects.equals(getUser(), other.getUser())) {
+            return false;
+        }
+        return true;
+    }
 }
