@@ -6,13 +6,9 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="error">
-            <AppenderRef ref="STDOUT" />
-        </Root>
         <Logger name="org.apache.log4j.xml" level="info"/>
-        <logger name="org.hibernate.SQL" additivity="false">
-            <level value="INFO" />
-            <appender-ref ref="STDOUT"/>
-        </logger>
+        <Root level="info">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
     </Loggers>
 </Configuration>
