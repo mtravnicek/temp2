@@ -63,4 +63,44 @@ public class TireDTO {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TireDTO)) return false;
+
+        TireDTO tireDTO = (TireDTO) o;
+
+        if (!name.equals(tireDTO.name)) return false;
+        if (tireType != tireDTO.tireType) return false;
+        if (!size.equals(tireDTO.size)) return false;
+        if (!manufacturer.equals(tireDTO.manufacturer)) return false;
+        if (!vehicleType.equals(tireDTO.vehicleType)) return false;
+        return price.equals(tireDTO.price);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 31 + name.hashCode();
+        result = 31 * result + tireType.hashCode();
+        result = 31 * result + size.hashCode();
+        result = 31 * result + manufacturer.hashCode();
+        result = 31 * result + vehicleType.hashCode();
+        result = 31 * result + price.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "TireDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", tireType=" + tireType +
+                ", size='" + size + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", vehicleType='" + vehicleType + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
