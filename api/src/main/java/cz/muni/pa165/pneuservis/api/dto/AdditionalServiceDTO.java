@@ -42,4 +42,40 @@ public class AdditionalServiceDTO {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
+    @Override
+    public int hashCode() {
+        return 31 * ((name == null) ? 1 : name.hashCode());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (! (obj instanceof AdditionalServiceDTO)) {
+            return false;
+        }
+        AdditionalServiceDTO other = (AdditionalServiceDTO) obj;
+        if (name == null) {
+            if (other.getName() != null) {
+                return false;
+            }
+        } else if (!name.equals(other.getName()))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "AdditionalServiceDTO {" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
