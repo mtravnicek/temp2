@@ -8,7 +8,6 @@ import cz.muni.pa165.pneuservis.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.*;
@@ -18,7 +17,6 @@ import java.util.stream.Collectors;
  * @author Michal Krajcovic <mkrajcovic@mail.muni.cz>
  */
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -67,6 +65,6 @@ public class UserServiceImpl implements UserService {
 
         List<Order> byDateCreatedBetween = orderRepository.findByDateCreatedBetween(sevenDaysAgo.getTime(), now.getTime());
 
-        return byDateCreatedBetween.stream().map(Order::getUser).collect(Collectors.toList());
+        return new ArrayList<>(byDateCreatedBetween.stream().map(Order::getUser).collect(Collectors.toSet()));
     }
 }

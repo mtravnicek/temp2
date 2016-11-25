@@ -7,6 +7,8 @@ import cz.muni.pa165.pneuservis.service.BeanMappingService;
 import cz.muni.pa165.pneuservis.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -14,6 +16,8 @@ import java.util.List;
 /**
  * @author Michal Krajcovic <mkrajcovic@mail.muni.cz>
  */
+@Service
+@Transactional
 public class UserFacadeImpl implements UserFacade {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
