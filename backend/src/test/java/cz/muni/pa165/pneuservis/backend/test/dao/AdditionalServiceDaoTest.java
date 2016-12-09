@@ -20,7 +20,7 @@ import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 
 /**
- * Created by Michal Travnicek
+ * @author  Michal Travnicek 31/10/2016
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = DaoTestConfig.class)

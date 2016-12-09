@@ -18,7 +18,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by Michal Travnicek on 10/26/2016.
+ * @author Michal Travnicek on 10/26/2016.
  */
 @Entity
 @Table(name = "Orders")
